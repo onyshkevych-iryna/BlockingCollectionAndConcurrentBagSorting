@@ -1,0 +1,14 @@
+C:\Users\iryna.onyshkevych\OneDrive - Valtech\Bureau\Mentoring\SyncAndAsyncSorting\SyncAndAsyncSorting\bin\Debug\netcoreapp3.1\SyncAndAsyncSorting.exe
+C:\Users\iryna.onyshkevych\OneDrive - Valtech\Bureau\Mentoring\SyncAndAsyncSorting\SyncAndAsyncSorting\bin\Debug\netcoreapp3.1\SyncAndAsyncSorting.deps.json
+C:\Users\iryna.onyshkevych\OneDrive - Valtech\Bureau\Mentoring\SyncAndAsyncSorting\SyncAndAsyncSorting\bin\Debug\netcoreapp3.1\SyncAndAsyncSorting.runtimeconfig.json
+C:\Users\iryna.onyshkevych\OneDrive - Valtech\Bureau\Mentoring\SyncAndAsyncSorting\SyncAndAsyncSorting\bin\Debug\netcoreapp3.1\SyncAndAsyncSorting.runtimeconfig.dev.json
+C:\Users\iryna.onyshkevych\OneDrive - Valtech\Bureau\Mentoring\SyncAndAsyncSorting\SyncAndAsyncSorting\bin\Debug\netcoreapp3.1\SyncAndAsyncSorting.dll
+C:\Users\iryna.onyshkevych\OneDrive - Valtech\Bureau\Mentoring\SyncAndAsyncSorting\SyncAndAsyncSorting\bin\Debug\netcoreapp3.1\SyncAndAsyncSorting.pdb
+C:\Users\iryna.onyshkevych\OneDrive - Valtech\Bureau\Mentoring\SyncAndAsyncSorting\SyncAndAsyncSorting\obj\Debug\netcoreapp3.1\SyncAndAsyncSorting.csproj.AssemblyReference.cache
+C:\Users\iryna.onyshkevych\OneDrive - Valtech\Bureau\Mentoring\SyncAndAsyncSorting\SyncAndAsyncSorting\obj\Debug\netcoreapp3.1\SyncAndAsyncSorting.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\iryna.onyshkevych\OneDrive - Valtech\Bureau\Mentoring\SyncAndAsyncSorting\SyncAndAsyncSorting\obj\Debug\netcoreapp3.1\SyncAndAsyncSorting.AssemblyInfoInputs.cache
+C:\Users\iryna.onyshkevych\OneDrive - Valtech\Bureau\Mentoring\SyncAndAsyncSorting\SyncAndAsyncSorting\obj\Debug\netcoreapp3.1\SyncAndAsyncSorting.AssemblyInfo.cs
+C:\Users\iryna.onyshkevych\OneDrive - Valtech\Bureau\Mentoring\SyncAndAsyncSorting\SyncAndAsyncSorting\obj\Debug\netcoreapp3.1\SyncAndAsyncSorting.csproj.CoreCompileInputs.cache
+C:\Users\iryna.onyshkevych\OneDrive - Valtech\Bureau\Mentoring\SyncAndAsyncSorting\SyncAndAsyncSorting\obj\Debug\netcoreapp3.1\SyncAndAsyncSorting.dll
+C:\Users\iryna.onyshkevych\OneDrive - Valtech\Bureau\Mentoring\SyncAndAsyncSorting\SyncAndAsyncSorting\obj\Debug\netcoreapp3.1\SyncAndAsyncSorting.pdb
+C:\Users\iryna.onyshkevych\OneDrive - Valtech\Bureau\Mentoring\SyncAndAsyncSorting\SyncAndAsyncSorting\obj\Debug\netcoreapp3.1\SyncAndAsyncSorting.genruntimeconfig.cache

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "fufbbBs6tlOqYffGtMza8az8qmiOAuWol5M/pR97smhA5VuCRhYe/m/9XIw5OIhMII5/Zs3MIXF562ADPN/fIQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\iryna.onyshkevych\\OneDrive - Valtech\\Bureau\\Mentoring\\SyncAndAsyncSorting\\SyncAndAsyncSorting\\SyncAndAsyncSorting.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\iryna.onyshkevych\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.25\\microsoft.netcore.app.host.win-x64.3.1.25.nupkg.sha512"
+  ],
+  "logs": []
+}
