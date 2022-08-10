@@ -15,24 +15,24 @@ namespace SyncAndAsyncSorting
             timer.Start();
             SortingBlockingCollection(blockingCollection);
             timer.Stop();
-            Console.WriteLine(timer.ElapsedMilliseconds.ToString());
+            Console.WriteLine("Sync sortig of the Blocking Collection takes: " + timer.ElapsedMilliseconds.ToString());
 
             timer.Start();
             SortingBlockingCollectionAsync(blockingCollection);
             timer.Stop();
-            Console.WriteLine(timer.ElapsedMilliseconds.ToString());
+            Console.WriteLine("Async sortig of the Blocking Collection takes: " + timer.ElapsedMilliseconds.ToString());
 
             var concurrentBag = new ConcurrentBag<int>() { 1, 5, -2, 45, 22, -4, 3 };
 
             timer.Start();
             SortingConcurrentBag(concurrentBag);
             timer.Stop();
-            Console.WriteLine(timer.ElapsedMilliseconds.ToString());
+            Console.WriteLine("Sync sortig of the Concurrent Bag takes: " + timer.ElapsedMilliseconds.ToString());
 
             timer.Start();
             SortingConcurrentBagAsync(concurrentBag);
             timer.Stop();
-            Console.WriteLine(timer.ElapsedMilliseconds.ToString());
+            Console.WriteLine("Async sortig of the Concurrent Bag takes: " + timer.ElapsedMilliseconds.ToString());
 
             Console.ReadKey();
         }
@@ -62,18 +62,18 @@ namespace SyncAndAsyncSorting
 
         private static void SortingBlockingCollection(BlockingCollection<int> _bc)
         {
-            BlockingCollection<int> newbc = new BlockingCollection<int>();
-            BlockingCollection<int> newnewbc = new BlockingCollection<int>();
+            var sortedBC = new BlockingCollection<int>();
+            var notSortedBC = new BlockingCollection<int>();
             int minEl = FindMinimumElementInBlockingCollection(_bc);
 
-            foreach (var c in _bc)
+            foreach (var element in _bc)
             {
-                if (c != minEl)
-                    newbc.Add(c);
+                if (element != minEl)
+                    sortedBC.Add(element);
                 else
-                    newnewbc.Add(c);
+                    notSortedBC.Add(element);
             }
-            SortingBlockingCollection(newbc);
+            SortingBlockingCollection(sortedBC);
         }
         #endregion
 
@@ -84,6 +84,7 @@ namespace SyncAndAsyncSorting
             int notMinEl;
             _bc.TryTake(out minEl);
             int temp = minEl;
+
             for (int i = 0; i <= _bc.Count; i++)
             {
                 _bc.TryTake(out minEl);
@@ -93,7 +94,6 @@ namespace SyncAndAsyncSorting
                 }
 
                 _bc.TryTake(out notMinEl);
-
                 if (notMinEl < minEl)
                     minEl = notMinEl;
                 temp = minEl;
@@ -103,20 +103,20 @@ namespace SyncAndAsyncSorting
 
         private static async Task SortingBlockingCollectionAsync(BlockingCollection<int> _bc)
         {
-            BlockingCollection<int> newbc = new BlockingCollection<int>();
-            BlockingCollection<int> newnewbc = new BlockingCollection<int>();
+            var sortedBC = new BlockingCollection<int>();
+            var notSortedBC = new BlockingCollection<int>();
             await Task.Run(() =>
             {
                 int minEl = FindMinimumElementInBlockingCollectionAsync(_bc).Result;
 
-                foreach (var c in _bc)
+                foreach (var element in _bc)
                 {
-                    if (c != minEl)
-                        newbc.Add(c);
+                    if (element != minEl)
+                        sortedBC.Add(element);
                     else
-                        newnewbc.Add(c);
+                        notSortedBC.Add(element);
                 }
-                SortingBlockingCollectionAsync(newbc);
+                SortingBlockingCollectionAsync(sortedBC);
             });
         }
         #endregion
@@ -190,8 +190,8 @@ namespace SyncAndAsyncSorting
 
         private static async Task SortingConcurrentBagAsync(ConcurrentBag<int> _cb)
         {
-            ConcurrentBag<int> newbc = new ConcurrentBag<int>();
-            ConcurrentBag<int> newnewbc = new ConcurrentBag<int>();
+            var sortedCB = new ConcurrentBag<int>();
+            var notSortedCB = new ConcurrentBag<int>();
             await Task.Run(() =>
             {
                 int minEl = FindMinimumElementInConcurrentBagAsync(_cb).Result;
@@ -199,13 +199,29 @@ namespace SyncAndAsyncSorting
                 foreach (var element in _cb)
                 {
                     if (element != minEl)
-                        newbc.Add(element);
+                        sortedCB.Add(element);
                     else
-                        newnewbc.Add(element);
+                        notSortedCB.Add(element);
                 }
-                SortingConcurrentBagAsync(newbc);
+                SortingConcurrentBagAsync(sortedCB);
             });
         }
         #endregion
+
+        private static void Timer(BlockingCollection<int> _bc)
+        {
+            var sortedBC = new BlockingCollection<int>();
+            var notSortedBC = new BlockingCollection<int>();
+            int minEl = FindMinimumElementInBlockingCollection(_bc);
+
+            foreach (var element in _bc)
+            {
+                if (element != minEl)
+                    sortedBC.Add(element);
+                else
+                    notSortedBC.Add(element);
+            }
+            SortingBlockingCollection(sortedBC);
+        }
     }
 }
