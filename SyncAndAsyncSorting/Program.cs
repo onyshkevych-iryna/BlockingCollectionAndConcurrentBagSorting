@@ -38,21 +38,24 @@ namespace SyncAndAsyncSorting
         }
 
         #region sync sorting of Blocking Collection
-        private static int FindMinimumElementInBlockingCollection(BlockingCollection<int> _bc)
+        private static int FindMinimumElementInBlockingCollection(BlockingCollection<int> _bc, out BlockingCollection<int> _newBc)
         {
+            _newBc = new BlockingCollection<int>();
             int minEl;
             int notMinEl;
             _bc.TryTake(out minEl);
+            _newBc.Add(minEl);
             int temp = minEl;
             for (int i = 0; i <= _bc.Count; i++)
             {
                 _bc.TryTake(out minEl);
+                _newBc.Add(minEl);
                 if (minEl > temp)
                 {
                     minEl = temp;
                 }
-
                 _bc.TryTake(out notMinEl);
+                _newBc.Add(notMinEl);
                 if (notMinEl < minEl)
                     minEl = notMinEl;
                 temp = minEl;
@@ -64,9 +67,11 @@ namespace SyncAndAsyncSorting
         {
             var sortedBC = new BlockingCollection<int>();
             var notSortedBC = new BlockingCollection<int>();
-            int minEl = FindMinimumElementInBlockingCollection(_bc);
 
-            foreach (var element in _bc)
+
+            int minEl = FindMinimumElementInBlockingCollection(_bc, out BlockingCollection<int> _newBc);
+
+            foreach (var element in _newBc)
             {
                 if (element != minEl)
                     sortedBC.Add(element);
@@ -122,22 +127,25 @@ namespace SyncAndAsyncSorting
         #endregion
 
         #region sync sorting of Concurrent Bag
-        private static int FindMinimumElement(ConcurrentBag<int> _cb)
+        private static int FindMinimumElement(ConcurrentBag<int> _cb, out ConcurrentBag<int> _newCb)
         {
+            _newCb = new ConcurrentBag<int>();
             int minEl;
             int notMinEl;
             _cb.TryTake(out minEl);
+            _newCb.Add(minEl);
             int temp = minEl;
             for (int i = 0; i <= _cb.Count; i++)
             {
                 _cb.TryTake(out minEl);
+                _newCb.Add(minEl);
                 if (minEl > temp)
                 {
                     minEl = temp;
                 }
 
                 _cb.TryTake(out notMinEl);
-
+                _newCb.Add(notMinEl);
                 if (notMinEl < minEl)
                     minEl = notMinEl;
                 temp = minEl;
@@ -150,9 +158,9 @@ namespace SyncAndAsyncSorting
             var sortedCB = new ConcurrentBag<int>();
             var notSortedCB = new ConcurrentBag<int>();
 
-            int minEl = FindMinimumElement(_cb);
+            int minEl = FindMinimumElement(_cb, out ConcurrentBag<int> _newCb);
 
-            foreach (var element in _cb)
+            foreach (var element in _newCb)
             {
                 if (element != minEl)
                     notSortedCB.Add(element);
@@ -208,20 +216,20 @@ namespace SyncAndAsyncSorting
         }
         #endregion
 
-        private static void Timer(BlockingCollection<int> _bc)
-        {
-            var sortedBC = new BlockingCollection<int>();
-            var notSortedBC = new BlockingCollection<int>();
-            int minEl = FindMinimumElementInBlockingCollection(_bc);
+        //private static void Timer(BlockingCollection<int> _bc)
+        //{
+        //    var sortedBC = new BlockingCollection<int>();
+        //    var notSortedBC = new BlockingCollection<int>();
+        //    int minEl = FindMinimumElementInBlockingCollection(_bc);
 
-            foreach (var element in _bc)
-            {
-                if (element != minEl)
-                    sortedBC.Add(element);
-                else
-                    notSortedBC.Add(element);
-            }
-            SortingBlockingCollection(sortedBC);
-        }
+        //    foreach (var element in _bc)
+        //    {
+        //        if (element != minEl)
+        //            sortedBC.Add(element);
+        //        else
+        //            notSortedBC.Add(element);
+        //    }
+        //    SortingBlockingCollection(sortedBC);
+        //}
     }
 }
