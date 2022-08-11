@@ -78,7 +78,8 @@ namespace SyncAndAsyncSorting
                 else
                     notSortedBC.Add(element);
             }
-            SortingBlockingCollection(sortedBC);
+            if (notSortedBC.Count < _newBc.Count)
+                SortingBlockingCollection(sortedBC);
         }
         #endregion
 
@@ -121,7 +122,9 @@ namespace SyncAndAsyncSorting
                     else
                         notSortedBC.Add(element);
                 }
-                SortingBlockingCollectionAsync(sortedBC);
+
+                if (notSortedBC.Count < _bc.Count)
+                    SortingBlockingCollectionAsync(sortedBC);
             });
         }
         #endregion
@@ -168,7 +171,8 @@ namespace SyncAndAsyncSorting
                     sortedCB.Add(element);
             }
 
-            SortingConcurrentBag(notSortedCB);
+            if (notSortedCB.Count < _cb.Count)
+                SortingConcurrentBag(notSortedCB);
         }
         #endregion
 
@@ -211,7 +215,8 @@ namespace SyncAndAsyncSorting
                     else
                         notSortedCB.Add(element);
                 }
-                SortingConcurrentBagAsync(sortedCB);
+                if (notSortedCB.Count < _cb.Count)
+                    SortingConcurrentBagAsync(sortedCB);
             });
         }
         #endregion
